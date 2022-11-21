@@ -14,7 +14,7 @@ export const gmpStore = defineStore('gmp', {
     async setRequestData(requestData) {
       this.requestDataState = requestData;
     },
-    clearUser() {
+    clearGmpState() {
       this.$reset()
     }
   }

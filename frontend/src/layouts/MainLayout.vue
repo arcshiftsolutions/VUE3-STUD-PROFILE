@@ -3,7 +3,7 @@
 
     <Header/>
 
-    <q-page-container>
+    <q-page-container class="full-height window-height window-width row justify-center items-center">
       <router-view />
     </q-page-container>
 

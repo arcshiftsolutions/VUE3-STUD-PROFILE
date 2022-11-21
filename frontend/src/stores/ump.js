@@ -33,7 +33,7 @@ export const umpStore = defineStore('ump', {
     async setUpdateData(updateData){
       this.updateDataState = updateData;
     },
-    clearUser() {
+    clearUmpState() {
       this.$reset()
     }
   },

@@ -1,6 +1,6 @@
 <!--suppress ALL -->
 <template>
-  <q-page-container fluid class="full-height" v-if="!isAuthenticated && !isLoading">
+  <div v-if="!isAuthenticated && !isLoading">
     <ModalJourney/>
     <!-- login article -->
     <article name="login-banner">
@@ -8,31 +8,29 @@
           <Login></Login>
         </div>
     </article>
-  </q-page-container>
+  </div>
 
-  <q-page-container fluid class="full-height" v-else-if="isLoading">
-    <article id="progress-display-container" class="top-banner full-height">
-      <div class="row" align="center" justify="center">
-        <q-circular-progress
-                size="60"
-                :width="7"
-                color="primary"
-                indeterminate
-        ></q-circular-progress>
-      </div>
-    </article>
-  </q-page-container>
+  <div v-else-if="isLoading" id="progress-display-container" class="top-banner full-height window-width flex-center">
+    <div class="floating-label">
+      <q-circular-progress
+        size="5em"
+        :width="7"
+        color="primary"
+        indeterminate
+      ></q-circular-progress>
+    </div>
+  </div>
 
-  <q-page-container fluid v-else class="full-height">
-	<div justify=center class="row" :class="{'px-16': $q.screen.xl, 'mx-16': $q.screen.xl }">
-      <div class="col" cols="10" xl="8" lg="8" md="10" sm="10" xs="10" :class="{'px-16': $q.screen.xl }">
-          <div>If you are currently attending a K-12 school, please request your PEN or update your personal information by contacting the main office at your school
-             <ul class="pl-8" style="list-style-position: outside;">
-               <li><a href="http://www.bced.gov.bc.ca/apps/imcl/imclWeb/Home.do" rel="noopener noreferrer" target="_blank">Find your school's contact information</a></li>
-             </ul>
-          </div>
-      </div>
-	</div>
+  <div v-else>
+    <div justify=center class="row" :class="{'px-16': $q.screen.xl, 'mx-16': $q.screen.xl }">
+        <div class="col" cols="10" xl="8" lg="8" md="10" sm="10" xs="10" :class="{'px-16': $q.screen.xl }">
+            <div>If you are currently attending a K-12 school, please request your PEN or update your personal information by contacting the main office at your school
+               <ul class="pl-8" style="list-style-position: outside;">
+                 <li><a href="http://www.bced.gov.bc.ca/apps/imcl/imclWeb/Home.do" rel="noopener noreferrer" target="_blank">Find your school's contact information</a></li>
+               </ul>
+            </div>
+        </div>
+    </div>
     <div class="row" justify=center>
       <div cols="12" lg="6" class="col px-8">
         <UserStudentCard v-if="hasBcscLinkageForStudent" class="px-4 py-4"></UserStudentCard>
@@ -63,7 +61,7 @@
         </q-card>
       </div>
     </div>
-  </q-page-container>
+  </div>
 </template>
 
 <script>
@@ -91,16 +89,12 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .top-banner{
     background-color: aliceblue;
     background-size: cover;
     align-items: center;
     display: flex;
-  }
-  .full-height{
-    height: 100%;
   }
 </style>
 

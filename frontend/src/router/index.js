@@ -1,6 +1,7 @@
 import { route } from 'quasar/wrappers'
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
 import routes from './routes'
+import {authStore} from "stores/auth";
 
 /*
  * If not building with SSR mode, you can
@@ -18,6 +19,7 @@ export default route(function (/* { store, ssrContext } */) {
 
   const Router = createRouter({
     scrollBehavior: () => ({ left: 0, top: 0 }),
+    base: process.env.BASE_URL,
     routes,
 
     // Leave this as is and make changes in quasar.conf.js instead!
@@ -25,6 +27,29 @@ export default route(function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.VUE_ROUTER_BASE)
   })
+
+  Router.beforeEach((to, _from, next) => {
+    if (to.meta.requiresAuth && authStore().isAuthenticated) {
+      authStore().getJwtToken().then(() => {
+        if (!authStore().isAuthenticated) {
+          next('/token-expired');
+        } else if(to.meta.notRefreshUserInfo) {
+          next();
+        } else {
+          authStore().getUserInfo().then(() => {
+            next();
+          }).catch(() => {
+            next('error');
+          });
+        }
+      }).catch(() => {
+        next('/token-expired');
+      });
+    }
+    else{
+      next();
+    }
+  });
 
   return Router
 })
