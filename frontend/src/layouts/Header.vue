@@ -11,25 +11,19 @@
 
       <q-space></q-space>
       <div v-if="isAuthenticated && dataReady">
-        <q-menu name="user_options" offset-y>
-          <template v-slot:activator="{ on }">
-            <q-chip tabindex="0" v-on="on" pill color="#003366" dark>
-              <q-avatar left color="info">
-                {{ userInfo.displayName[0] }}
-              </q-avatar>
-              <span class="display-name">Marco {{ userInfo.displayName }}</span>
-            </q-chip>
-          </template>
-          <q-list dark color="#003366">
-            <q-item style="min-height: 4vh" id="home_button" :href='authRoutes.LOGIN'>
-              <q-item-label>Home</q-item-label>
-            </q-item>
-            <q-item style="min-height: 4vh" id="logout_button" :href='authRoutes.LOGOUT'>
-              <q-item-label>Logout</q-item-label>
-            </q-item>
-          </q-list>
-        </q-menu>
-
+        <q-chip clickable tabindex="0" icon="account_circle" pill style="background-color: #003366" dark>
+          {{ userInfo.displayName }}
+          <q-menu fit style="background-color: #003366" name="user_options" offset-y>
+            <q-list dark color="#003366">
+              <q-item id="home_button" :href='authRoutes.LOGIN'>
+                <q-item-section>Home</q-item-section>
+              </q-item>
+              <q-item id="logout_button" :href='authRoutes.LOGOUT'>
+                <q-item-section>Logout</q-item-section>
+              </q-item>
+            </q-list>
+          </q-menu>
+        </q-chip>
       </div>
       <div v-else-if="isAuthenticated && !dataReady">
         <q-skeleton type="QChip">
