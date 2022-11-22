@@ -125,7 +125,7 @@ import DocumentChip from '../DocumentChip.vue';
 import { PenRequestStatuses, StudentRequestStatuses } from '../utils/constants';
 import { pick, values, partition } from 'lodash';
 import ApiService from '../common/apiService';
-import {mapState} from "pinia/dist/pinia";
+import {mapState} from "pinia";
 import {penRequestStore} from "stores/penRequest";
 import {studentRequestStore} from "stores/studentRequest";
 import {authStore} from "stores/auth";

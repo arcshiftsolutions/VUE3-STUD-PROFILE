@@ -51,10 +51,12 @@ export const authStore = defineStore('auth', {
     },
     async setJwtToken(token = null) {
       if (token) {
+        console.log('Setting auth state to true');
         this.isAuthenticatedState = true;
         this.jwtTokenState = token;
         localStorage.setItem('jwtToken', token);
       } else {
+        console.log('Setting auth state to false');
         this.isAuthenticatedState = false;
         this.jwtTokenState = null;
         localStorage.removeItem('jwtToken');
@@ -75,12 +77,12 @@ export const authStore = defineStore('auth', {
     async getJwtToken() {
       this.errorState = false;
       if (!!this.jwtTokenState) {
-        if (isExpiredToken(getters.jwtToken)) {
+        if (isExpiredToken(this.jwtTokenState)) {
           this.logout();
           return;
         }
 
-        const response = await AuthService.refreshAuthToken(getters.jwtToken);
+        const response = await AuthService.refreshAuthToken(this.jwtTokenState);
         if (response.jwtFrontend) {
           this.setJwtToken(response.jwtFrontend);
           ApiService.setAuthHeader(response.jwtFrontend);
@@ -89,7 +91,6 @@ export const authStore = defineStore('auth', {
         }
       } else {  //inital login and redirect
         const response = await AuthService.getAuthToken();
-
         if (response.jwtFrontend) {
           this.setJwtToken(response.jwtFrontend);
           ApiService.setAuthHeader(response.jwtFrontend);

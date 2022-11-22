@@ -98,7 +98,7 @@
 
 <script>
 import { PenRequestStatuses } from '../../utils/constants';
-import {mapState} from "pinia/dist/pinia";
+import {mapState} from "pinia";
 import {penRequestStore} from "stores/penRequest";
 import {authStore} from "stores/auth";
 import {rootStore} from "stores/root";

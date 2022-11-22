@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import RequestStepper from '../RequestStepper';
-import {mapState} from "pinia/dist/pinia";
+import RequestStepper from '../RequestStepper.vue';
+import {mapState} from "pinia";
 import {authStore} from "../../stores/auth.js";
 
 export default {

@@ -191,14 +191,13 @@
               min-width="290px"
               v-else
             >
-              <template v-slot:activator="{ on }">
+              <template v-slot:activator="{}">
                 <q-input
                   color="#003366"
                   outlined
                   v-model="userPost.dob"
                   label="Birthdate"
                   readonly
-                  v-on="on"
                   id="birthdate"
                   :rules="requiredRules()"
                   :disabled="enableDisableForm.disabled"
@@ -296,7 +295,7 @@
               color="green"
               class="mt-0"
               :rules="acceptanceRule('')"
-              @click.native="clickAcceptance"
+              @click="clickAcceptance"
             >
               <template v-slot:label>
                 <div class="pl-3">
@@ -363,15 +362,9 @@
 
 <script>
 import {LocalDate} from '@js-joda/core';
-import {mapState} from "pinia/dist/pinia";
+import {mapState} from "pinia";
 import {authStore} from "stores/auth";
 import {gmpStore} from "stores/gmp";
-
-// `gmp` is the name of the Vuex module.
-const { mapFields } = createHelpers({
-  getterType: 'gmp/getField',
-  mutationType: 'gmp/updateField',
-});
 
 export default {
   data() {
@@ -420,9 +413,6 @@ export default {
     ...mapState(authStore, ['userInfo']),
     ...mapState(gmpStore, ['requestData']),
 
-    ...mapFields([
-      'declared'
-    ]),
     dataReady() {
       return !!this.userInfo;
     },

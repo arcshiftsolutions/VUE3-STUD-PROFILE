@@ -3,15 +3,15 @@
     <article name="session-expired-banner" class="top-banner flex-center">
       <div class="row">
         <div class="col">
-        <q-card class="session-expired-card">
-          <q-card-section>
-            <div class="session-header" id="session-expired-text">Session Expired</div>
-          </q-card-section>
-          <q-card-section class="session-content" id="session-expired-descriptor">
-            <div class="row" style="margin: .3rem">Your secure session has ended as a result of inactivity.</div>
-            <a id="login-button" @click="clearStorage" :href="routes.LOGIN" class="q-mx-xs" dark color='#003366'>Log In</a><span>again to continue.</span>
-          </q-card-section>
-        </q-card>
+          <q-card class="session-expired-card">
+            <q-card-section>
+              <div class="session-header" id="session-expired-text">Session Expired</div>
+            </q-card-section>
+            <q-card-section class="session-content" id="session-expired-descriptor">
+              <div class="row" style="margin: .3rem">Your secure session has ended as a result of inactivity.</div>
+              <a id="login-button" @click="clearStorage" :href="routes.LOGIN" class="q-mx-xs" dark color='#003366'>Log In</a><span>again to continue.</span>
+            </q-card-section>
+          </q-card>
         </div>
       </div>
     </article>

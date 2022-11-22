@@ -49,7 +49,7 @@
 import { find } from 'lodash';
 import { RequestStatuses } from '../utils/constants';
 import ApiService from '../common/apiService';
-import {mapState} from "pinia/dist/pinia";
+import {mapState} from "pinia";
 import {rootStore} from "stores/root";
 
 export default {

@@ -36,7 +36,7 @@
 import RequestStepper from '../RequestStepper';
 import { PenRequestStatuses } from '../utils/constants';
 import { pick, values } from 'lodash';
-import {mapState} from "pinia/dist/pinia";
+import {mapState} from "pinia";
 import {penRequestStore} from "stores/penRequest";
 import {authStore} from "stores/auth.js";
 import {umpStore} from "stores/ump.js";

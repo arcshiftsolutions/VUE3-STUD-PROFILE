@@ -92,7 +92,7 @@
 
 <script>
 import { StudentRequestStatuses } from '@/utils/constants';
-import {mapState} from "pinia/dist/pinia";
+import {mapState} from "pinia";
 import {studentRequestStore} from "stores/studentRequest";
 import {authStore} from "stores/auth";
 import {rootStore} from "stores/root";

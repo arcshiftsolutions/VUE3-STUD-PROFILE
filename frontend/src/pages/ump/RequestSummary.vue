@@ -91,7 +91,7 @@
 <script>
 import StudentInfoCard from '../StudentInfoCard';
 import {mapKeys, pick, find} from 'lodash';
-import {mapState} from "pinia/dist/pinia";
+import {mapState} from "pinia";
 import {umpStore} from "stores/ump";
 import {studentRequestStore} from "stores/studentRequest";
 

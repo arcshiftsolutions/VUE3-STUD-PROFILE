@@ -93,7 +93,7 @@ import MessageCard from './MessageCard.vue';
 import RequestCard from './RequestCard.vue';
 import { PenRequestStatuses, StudentRequestStatuses } from '../../utils/constants';
 import { pick, values } from 'lodash';
-import {mapState} from "pinia/dist/pinia";
+import {mapState} from "pinia";
 import {rootStore} from "stores/root";
 import {penRequestStore} from "stores/penRequest";
 import {studentRequestStore} from "stores/studentRequest";

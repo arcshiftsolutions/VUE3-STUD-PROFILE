@@ -344,7 +344,7 @@ import DocumentChip from '../DocumentChip.vue';
 import DocumentUpload from '../DocumentUpload';
 import { LocalDate } from '@js-joda/core';
 import { isEqual, mapValues, pick } from 'lodash';
-import {mapState} from "pinia/dist/pinia";
+import {mapState} from "pinia";
 import {rootStore} from "stores/root";
 import {umpStore} from "stores/ump";
 import {documentStore} from "stores/document";

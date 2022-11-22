@@ -71,7 +71,7 @@
 
 <script>
 import StudentInfoCard from '../StudentInfoCard';
-import {mapState} from "pinia/dist/pinia";
+import {mapState} from "pinia";
 import {gmpStore} from "stores/gmp";
 import {penRequestStore} from "stores/penRequest";
 

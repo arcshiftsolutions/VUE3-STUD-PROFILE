@@ -85,7 +85,7 @@
 
 <script>
 
-import {mapState} from "pinia/dist/pinia";
+import {mapState} from "pinia";
 import {authStore} from "stores/auth";
 
 export default {

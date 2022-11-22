@@ -59,7 +59,7 @@
 import { RequestStatuses } from '../utils/constants';
 import Chat from './Chat.vue';
 import StatusCard from './StatusCard.vue';
-import {mapState} from "pinia/dist/pinia";
+import {mapState} from "pinia";
 import {rootStore} from "stores/root";
 
 export default {

@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import {mapState} from "pinia/dist/pinia";
+import {mapState} from "pinia";
 import {penRequestStore} from "stores/penRequest";
 export default {
   data() {

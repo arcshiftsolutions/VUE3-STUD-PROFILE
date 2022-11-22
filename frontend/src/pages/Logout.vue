@@ -1,22 +1,22 @@
 <template>
   <q-page-container fluid class="full-height">
-
-    <!-- login article -->
-    <article name="logout-banner">
-      <div class="row" align="center" justify="center">
-        <div class="col" xs="10" sm="10" md="8" lg="4" xl="3">
-        <q-card class="session-expired-card">
-          <q-card-title class="gov-header">
-            <h4 id="logout_text">Logged Out</h4>
-          </q-card-title>
-          <q-card-section id="logout_descriptor">
-            <div class="row" style="margin: .3rem">You have Logged out.</div>
-            <a id="login-button" @click="clearStorage" :href="routes.LOGIN" class="ma-1" dark color='#003366'>Log In</a><span>again if you wish to continue.</span>
-          </q-card-section>
-        </q-card>
+    <article name="logout-banner" class="top-banner flex-center">
+      <div class="row">
+        <div class="col">
+          <q-card class="session-expired-card">
+            <q-card-section>
+              <div id="logout_text" class="session-header">Logged Out</div>
+            </q-card-section>
+            <q-card-section id="logout_descriptor">
+              <div class="row" style="margin: .3rem">You have Logged out.</div>
+              <a id="login-button" @click="clearStorage" :href="routes.LOGIN" class="q-mx-xs" dark color='#003366'>Log In</a><span>again if you wish to continue.</span>
+            </q-card-section>
+          </q-card>
         </div>
       </div>
     </article>
+    <!-- login article -->
+
   </q-page-container>
 </template>
 
@@ -42,14 +42,24 @@ export default {
 </script>
 
 <style scoped>
+.session-header{
+  color: rgba(0,0,0,.87);
+  flex-wrap: wrap;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: .0125em;
+  line-height: 2rem;
+  word-break: break-all;
+}
 
-  .full-height{
-    height: 100%;
-  }
-  .session-expired-card{
-    margin-top: 15rem;
-    width: 100%;
-    background: #D9E7D8;
-  }
+.full-height{
+  height: 100%;
+}
+
+.session-expired-card{
+  margin-top: 15rem;
+  width: 100%;
+  background: #D9E7D8;
+}
 
 </style>

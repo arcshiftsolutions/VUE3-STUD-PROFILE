@@ -28,7 +28,7 @@ export const documentStore = defineStore('document', {
     },
     async deleteFile({commit, getters, rootGetters}, {requestID, documentID}){
       await ApiService.deleteDocument(requestID, documentID, rootGetters.requestType);
-      const documents = getters.unsubmittedDocuments.filter(document => document.documentID !== documentID);
+      const documents = this.unsubmittedDocumentsState.filter(document => document.documentID !== documentID);
       this.unsubmittedDocuments = documents;
     }
   }
