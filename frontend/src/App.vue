@@ -19,7 +19,6 @@ export default defineComponent({
     ).catch(e => {
       if(! e.response || e.response.status !== HttpStatus.UNAUTHORIZED) {
         authStore().logout();
-        authStore().setError();
         router.replace({name: 'error', query: { message: `500_${e.data || 'ServerError'}` } });
       }
     }).finally(() => {

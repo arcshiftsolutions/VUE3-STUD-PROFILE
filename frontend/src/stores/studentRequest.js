@@ -19,7 +19,7 @@ export const studentRequestStore = defineStore('studentRequest', {
     async setRequest(request = null) {
       this.requestState = request;
     },
-    async postRequest({commit, rootGetters}, request){
+    async postRequest({rootGetters}, request){
       try {
         const response = await ApiService.postRequest(request, rootGetters.requestType);
         if(response.status !== 200){
@@ -32,7 +32,7 @@ export const studentRequestStore = defineStore('studentRequest', {
         return false;
       }
     },
-    async getCodes({commit}, requestType) {
+    async getCodes() {
       const response = await ApiService.getCodes('studentRequest');
       this.statusesState = response.data.statusCodes;
     }
