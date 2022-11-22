@@ -1,28 +1,28 @@
 <!--suppress ALL -->
 <template>
-  <div v-if="!isAuthenticated && !isLoading">
+<!--  <div v-if="!isAuthenticated && !isLoading">-->
 
-    <ModalJourney/>
-    <!-- login article -->
-    <article name="login-banner">
-        <div class="row" justify="center" style="margin-right: 0;margin-left: 0">
-          <Login></Login>
-        </div>
-    </article>
-  </div>
+<!--    <ModalJourney/>-->
+<!--    &lt;!&ndash; login article &ndash;&gt;-->
+<!--    <article name="login-banner">-->
+<!--        <div class="row" justify="center" style="margin-right: 0;margin-left: 0">-->
+<!--          <Login></Login>-->
+<!--        </div>-->
+<!--    </article>-->
+<!--  </div>-->
 
-  <div v-else-if="isLoading" id="progress-display-container" class="top-banner full-height window-width flex-center">
-    <div class="floating-label">
-      <q-circular-progress
-        size="5em"
-        :width="7"
-        color="primary"
-        indeterminate
-      ></q-circular-progress>
-    </div>
-  </div>
+<!--  <div v-else-if="isLoading" id="progress-display-container" class="top-banner full-height window-width flex-center">-->
+<!--    <div class="floating-label">-->
+<!--      <q-circular-progress-->
+<!--        size="5em"-->
+<!--        :width="7"-->
+<!--        color="primary"-->
+<!--        indeterminate-->
+<!--      ></q-circular-progress>-->
+<!--    </div>-->
+<!--  </div>-->
 
-  <div v-else>
+  <div >
     <div justify=center class="row" :class="{'px-16': $q.screen.xl, 'mx-16': $q.screen.xl }">
         <div class="col" cols="10" xl="8" lg="8" md="10" sm="10" xs="10" :class="{'px-16': $q.screen.xl }">
             <div>If you are currently attending a K-12 school, please request your PEN or update your personal information by contacting the main office at your school
@@ -66,8 +66,6 @@
 </template>
 
 <script>
-import Login from './Login.vue';
-import ModalJourney from './ModalJourney.vue';
 import UserStudentCard from './UserStudentCard.vue';
 import { mapState } from 'pinia';
 import {authStore} from "../stores/auth.js";
@@ -76,8 +74,6 @@ import {rootStore} from "../stores/root.js";
 export default {
   name: 'home',
   components: {
-    Login,
-    ModalJourney,
     UserStudentCard,
   },
   computed: {

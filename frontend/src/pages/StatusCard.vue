@@ -46,10 +46,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import { find } from 'lodash';
-import { RequestStatuses } from '@/utils/constants';
-import ApiService from '@/common/apiService';
+import { RequestStatuses } from '../utils/constants';
+import ApiService from '../common/apiService';
 
 export default {
   name: 'statusCard',
@@ -104,7 +103,7 @@ export default {
         this.$emit('success-alert', 'Your verification email has been sent successfully.');
       }).catch(() => {
         this.$emit('error-alert', 'Sorry, an unexpected error seems to have occurred. You can click on the resend button again later.');
-      }).finally(() => 
+      }).finally(() =>
         this.sending = false
       );
     },

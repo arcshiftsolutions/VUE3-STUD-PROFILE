@@ -66,9 +66,8 @@
 </template>
 
 <script>
-import { humanFileSize, getFileNameWithMaxNameLength } from '@/utils/file';
-import ApiService from '@/common/apiService';
-import { mapGetters } from 'vuex';
+import { humanFileSize, getFileNameWithMaxNameLength } from '../utils/file';
+import ApiService from '../common/apiService';
 import { sortBy } from 'lodash';
 
 export default {

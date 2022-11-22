@@ -97,8 +97,7 @@
 </template>
 
 <script>
-import { mapGetters,mapActions } from 'vuex';
-import { PenRequestStatuses } from '@/utils/constants';
+import { PenRequestStatuses } from '../../utils/constants';
 
 export default {
   name: 'messageCard',

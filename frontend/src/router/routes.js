@@ -3,6 +3,7 @@ import { umpStore } from '../stores/ump.js';
 import { authStore } from '../stores/auth.js';
 import { penRequestStore } from '../stores/penRequest.js';
 import { studentRequestStore } from '../stores/studentRequest.js';
+import { gmpStore } from '../stores/gmp.js';
 import { rootStore } from '../stores/root.js';
 import { PenRequestStatuses, StudentRequestStatuses } from '../utils/constants';
 
@@ -14,7 +15,7 @@ const routes = [
       {
         name: 'home',
         path: '',
-        component: () => import('../pages/SessionExpired.vue')
+        component: () => import('../pages/Home.vue')
       }
     ],
     meta: {

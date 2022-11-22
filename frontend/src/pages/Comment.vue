@@ -103,9 +103,8 @@
 
 <script>
 import DocumentChip from './DocumentChip.vue';
-import DocumentUpload from './DocumentUpload';
-import { mapGetters } from 'vuex';
-import ApiService from '@/common/apiService';
+import DocumentUpload from './DocumentUpload.vue';
+import ApiService from '../common/apiService';
 
 export default {
   components: {

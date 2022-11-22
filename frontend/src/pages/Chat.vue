@@ -34,7 +34,7 @@
             color="indigo darken-2"
             v-if="loading"
           ></v-progress-linear>
-          <Comments 
+          <Comments
             :unsubmittedDocuments="unsubmittedDocuments"
           ></Comments>
         </div>
@@ -51,7 +51,7 @@
             color="indigo darken-2"
             v-if="loading"
           ></v-progress-linear>
-          <SingleComment 
+          <SingleComment
             v-for="comment in commentHistory"
             :comment="comment"
             :myself="myself"
@@ -65,10 +65,9 @@
 <script>
 import SingleComment from './SingleComment.vue';
 import Comments from './Comment.vue';
-import ApiService from '@/common/apiService';
-import { mapGetters } from 'vuex';
+import ApiService from '../common/apiService';
 import { groupBy, sortBy, findLastIndex } from 'lodash';
-import { RequestStatuses } from '@/utils/constants';
+import { RequestStatuses } from '../utils/constants';
 
 export default {
   components: {
@@ -189,9 +188,9 @@ export default {
         if(lastMessage.myself) {
           this.setUnsubmittedComment(lastMessage);
           unsubmittedDocuments = (unsubmittedDocuments || []).concat(lastMessage.documents || []);
-          messages = messages.slice(0, messages.length - 1);          
+          messages = messages.slice(0, messages.length - 1);
         }
-        
+
         const historyIndex = findLastIndex(messages, ['myself', true]);
         requestIndex = historyIndex + 1;
         this.setRequestComments(messages.slice(requestIndex));

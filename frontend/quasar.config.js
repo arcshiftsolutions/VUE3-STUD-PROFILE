@@ -89,7 +89,21 @@ module.exports = configure(function (/* ctx */) {
     devServer: {
       // https: true
       open: true, // opens browser window automatically
-      port: 8081
+      port: 8081,
+      proxy:
+        {
+          ...['/api'].reduce(
+            (acc, ctx) => ({
+              ...acc,
+              [ctx]: {
+                target: 'http://localhost:8080',
+                changeOrigin: true,
+                ws: false
+              }
+            }),
+            {}
+          ),
+        }
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#framework

@@ -27,12 +27,12 @@
       <StatusCard
         :can-create-request="canCreateRequest"
         :new-request-text="newRequestText"
-        @success-alert="setSuccessAlert" 
+        @success-alert="setSuccessAlert"
         @error-alert="setErrorAlert"
       ></StatusCard>
     </div>
     <div class="row">
-      <Chat 
+      <Chat
         v-if="status !== requestStatuses.DRAFT && status !== requestStatuses.INITREV && status !== requestStatuses.ABANDONED"
         :commentDocuments = "commentDocuments"
       ></Chat>
@@ -56,10 +56,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import { RequestStatuses } from '@/utils/constants';
-import Chat from './Chat';
-import StatusCard from './StatusCard';
+import { RequestStatuses } from '../utils/constants';
+import Chat from './Chat.vue';
+import StatusCard from './StatusCard.vue';
 
 export default {
   name: 'requestDisplay',
