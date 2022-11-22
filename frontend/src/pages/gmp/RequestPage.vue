@@ -17,6 +17,8 @@
 
 <script>
 import RequestStepper from '../RequestStepper';
+import {mapState} from "pinia/dist/pinia";
+import {authStore} from "../../stores/auth.js";
 
 export default {
   name: 'request-page',
@@ -30,7 +32,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('auth', ['isAuthenticated', 'userInfo']),
+    ...mapState(authStore, ['isAuthenticated','userInfo']),
     hasPen() {
       return !!this.userInfo && !!this.userInfo.pen;
     },

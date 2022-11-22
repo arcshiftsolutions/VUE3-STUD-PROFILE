@@ -181,6 +181,9 @@
 <script>
 import { LocalDate } from '@js-joda/core';
 import { pick } from 'lodash';
+import {mapState} from "pinia/dist/pinia";
+import {rootStore} from "stores/root";
+import {umpStore} from "stores/ump";
 
 export default {
   name: 'currentInfo',
@@ -200,8 +203,8 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['student']),
-    ...mapGetters('ump', { previousData: 'recordedData' }),
+    ...mapState(rootStore, ['student']),
+    ...mapState(umpStore, { previousData: 'recordedData' }),
     hasStudentRecord() {
       return !!this.student;
     },
@@ -248,7 +251,6 @@ export default {
     Object.assign(this.recordedData, this.previousData);
   },
   methods: {
-    ...mapMutations('ump', ['setRecordedData']),
     requiredRules(hint = 'Required') {
       return [
         v => !!(v && v.trim()) || hint,
@@ -269,7 +271,7 @@ export default {
     },
     nextStep() {
       if(this.hasStudentRecord || this.validateForm()) {
-        this.setRecordedData(this.recordedData);
+        umpStore().setRecordedData(this.recordedData);
         this.$emit('next');
       }
     },

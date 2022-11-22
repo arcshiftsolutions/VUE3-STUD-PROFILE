@@ -363,6 +363,9 @@
 
 <script>
 import {LocalDate} from '@js-joda/core';
+import {mapState} from "pinia/dist/pinia";
+import {authStore} from "stores/auth";
+import {gmpStore} from "stores/gmp";
 
 // `gmp` is the name of the Vuex module.
 const { mapFields } = createHelpers({
@@ -414,8 +417,9 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('auth', ['userInfo']),
-    ...mapGetters('gmp', ['requestData']),
+    ...mapState(authStore, ['userInfo']),
+    ...mapState(gmpStore, ['requestData']),
+
     ...mapFields([
       'declared'
     ]),
@@ -458,7 +462,6 @@ export default {
     Object.assign(this.userPost, this.requestData);
   },
   methods: {
-    ...mapMutations('gmp', ['setRequestData']),
     requiredRules(hint = 'Required') {
       return [
         v => !!(v && v.trim()) || hint,
@@ -483,7 +486,7 @@ export default {
     submitRequestForm() {
       this.validate();
       if (this.validForm) {
-        this.setRequestData(this.userPost);
+        gmpStore().setRequestData(this.userPost);
         this.$emit('next');
       }
     },

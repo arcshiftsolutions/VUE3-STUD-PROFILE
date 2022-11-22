@@ -93,6 +93,11 @@ import MessageCard from './MessageCard.vue';
 import RequestCard from './RequestCard.vue';
 import { PenRequestStatuses, StudentRequestStatuses } from '../../utils/constants';
 import { pick, values } from 'lodash';
+import {mapState} from "pinia/dist/pinia";
+import {rootStore} from "stores/root";
+import {penRequestStore} from "stores/penRequest";
+import {studentRequestStore} from "stores/studentRequest";
+import {authStore} from "stores/auth";
 export default {
   name: 'home',
   components: {
@@ -103,11 +108,10 @@ export default {
     RequestCard,
   },
   computed: {
-    ...mapGetters('auth', ['isAuthenticated', 'userInfo', 'isLoading']),
-    ...mapGetters('penRequest', ['request']),
-    ...mapGetters('studentRequest', {studentRequest: 'request'}),
-    ...mapGetters(['student']),
-    ...mapGetters(['requestType']),
+    ...mapState(authStore, ['isAuthenticated','userInfo', 'isLoading']),
+    ...mapState(penRequestStore, ['request']),
+    ...mapState(studentRequestStore, {studentRequest: 'request'}),
+    ...mapState(rootStore, ['requestType','student']),
     hasPen() {
       return !!this.student && !!this.student.pen;
     },
@@ -134,7 +138,7 @@ export default {
     },
   },
   created() {
-    this.setRequestType('penRequest');
+    rootStore().setRequestType('penRequest');
   },
   watch: {
     isLoading(val) {
@@ -148,7 +152,6 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['setRequestType']),
     canCreateRequest(status) {
       return status === PenRequestStatuses.REJECTED || status === PenRequestStatuses.ABANDONED;
     },

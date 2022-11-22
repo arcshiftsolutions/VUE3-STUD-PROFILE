@@ -36,6 +36,10 @@
 import RequestStepper from '../RequestStepper';
 import { PenRequestStatuses } from '../utils/constants';
 import { pick, values } from 'lodash';
+import {mapState} from "pinia/dist/pinia";
+import {penRequestStore} from "stores/penRequest";
+import {authStore} from "stores/auth.js";
+import {umpStore} from "stores/ump.js";
 export default {
   name: 'requestPage',
   components: {
@@ -48,9 +52,9 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('auth', ['isAuthenticated', 'userInfo']),
-    ...mapGetters('penRequest', {penRequest: 'request'}),
-    ...mapGetters('ump', ['recordedData', 'updateData']),
+    ...mapState(authStore, ['isAuthenticated','userInfo']),
+    ...mapState(penRequestStore, {penRequest: 'request'}),
+    ...mapState(umpStore, ['recordedData','updateData']),
     hasPen() {
       return !!this.userInfo && !!this.userInfo.pen;
     },
@@ -67,15 +71,12 @@ export default {
       }
     },
   },
-  methods: {
-    ...mapMutations('studentRequest', ['setRequest', 'setUnsubmittedDocuments']),
-  },
   mounted() {
     if(!(this.isAuthenticated)){
       this.$router.push('home');
     }
-    this.setRequest();
-    this.setUnsubmittedDocuments();
+    studentRequestStore().setRequest();
+    studentRequestStore().setUnsubmittedDocuments();
   },
 };
 </script>

@@ -49,6 +49,8 @@
 import { find } from 'lodash';
 import { RequestStatuses } from '../utils/constants';
 import ApiService from '../common/apiService';
+import {mapState} from "pinia/dist/pinia";
+import {rootStore} from "stores/root";
 
 export default {
   name: 'statusCard',
@@ -72,7 +74,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['requestType']),
+    ...mapState(rootStore, ['requestType']),
     request() {
       return this.$store.getters[`${this.requestType}/request`];
     },

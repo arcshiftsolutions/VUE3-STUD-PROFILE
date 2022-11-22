@@ -5,7 +5,7 @@ export const penRequestStore = defineStore('penRequest', {
   namespaced: true,
   state: () => ({
     statusesState: null,
-    requestState: null,
+    requestState: null
   }),
   getters: {
     statuses: state => state.statusesState,

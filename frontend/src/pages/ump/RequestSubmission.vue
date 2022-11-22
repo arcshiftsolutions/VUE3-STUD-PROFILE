@@ -48,9 +48,11 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
 import ApiService from '../common/apiService';
 import StudentInfoCard from '../StudentInfoCard';
+import {mapState} from "pinia";
+import {rootStore} from "../../stores/root.js";
+import {studentRequestStore} from "../../stores/studentRequest.js";
 
 export default {
   name: 'requestSubmission',
@@ -67,8 +69,8 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['requestType']),
-    ...mapGetters('studentRequest', ['request']),
+    ...mapState(rootStore, ['requestType']),
+    ...mapState(studentRequestStore, ['request'])
   },
   methods: {
     setSuccessAlert(alertMessage) {

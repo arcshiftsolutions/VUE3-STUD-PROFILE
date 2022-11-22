@@ -12,7 +12,7 @@ export const studentRequestStore = defineStore('studentRequest', {
     request: state => state.requestState,
     requestID: (state, getters, rootState, rootGetters) => state.requestState && state.requestState[`${rootGetters.requestType}ID`],
   },
-    actions: {
+  actions: {
     async setStatuses(statuses) {
       this.statusesState = statuses;
     },

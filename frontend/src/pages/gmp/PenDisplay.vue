@@ -49,7 +49,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import {mapState} from "pinia/dist/pinia";
+import {penRequestStore} from "stores/penRequest";
 export default {
   data() {
     return {
@@ -57,7 +58,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('penRequest', ['student'])
+    ...mapState(penRequestStore, ['request'])
   },
   methods: {
     async copyClipboard() {

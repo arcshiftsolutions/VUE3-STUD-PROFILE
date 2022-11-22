@@ -46,8 +46,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(authStore, ['isAuthenticated']),
-    ...mapState(authStore, ['userInfo']),
+    ...mapState(authStore, ['isAuthenticated','userInfo']),
     dataReady: function () {
       return this.userInfo;
     }

@@ -69,6 +69,8 @@
 import { humanFileSize, getFileNameWithMaxNameLength } from '../utils/file';
 import ApiService from '../common/apiService';
 import { sortBy } from 'lodash';
+import {mapState} from "pinia";
+import {rootStore} from "../stores/root.js";
 
 export default {
   props: {
@@ -109,7 +111,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(['requestType']),
+    ...mapState(rootStore, ['requestType']),
     documentTypeCodes() {
       return this.$store.getters[`${this.requestType}/documentTypeCodes`];
     },

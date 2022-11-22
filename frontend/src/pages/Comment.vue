@@ -105,6 +105,8 @@
 import DocumentChip from './DocumentChip.vue';
 import DocumentUpload from './DocumentUpload.vue';
 import ApiService from '../common/apiService';
+import {mapState} from "pinia/dist/pinia";
+import {rootStore} from "stores/root";
 
 export default {
   components: {
@@ -132,7 +134,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['requestType']),
+    ...mapState(rootStore, ['requestType']),
     requestID() {
       return this.$store.getters[`${this.requestType}/requestID`];
     },

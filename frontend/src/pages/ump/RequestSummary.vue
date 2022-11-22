@@ -89,9 +89,12 @@
 </template>
 
 <script>
-import {mapActions, mapGetters, mapMutations} from 'vuex';
 import StudentInfoCard from '../StudentInfoCard';
 import {mapKeys, pick, find} from 'lodash';
+import {mapState} from "pinia/dist/pinia";
+import {umpStore} from "stores/ump";
+import {studentRequestStore} from "stores/studentRequest";
+
 
 export default {
   name: 'requestSummary',
@@ -107,15 +110,13 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('ump', ['recordedData', 'updateData']),
-    ...mapGetters('studentRequest', ['documentTypeCodes', 'unsubmittedDocuments']),
+    ...mapState(umpStore, ['recordedData','updateData']),
+    ...mapState(studentRequestStore, ['documentTypeCodes','unsubmittedDocuments']),
     emailChanged() {
       return this.recordedData.email !== this.updateData.email;
     },
   },
   methods: {
-    ...mapActions('studentRequest', ['postRequest']),
-    ...mapMutations('studentRequest', ['setUnsubmittedDocuments']),
     setErrorAlert() {
       this.alertMessage = 'Sorry, an unexpected error seems to have occured. Please try again later.';
       this.alert = true;
@@ -139,9 +140,9 @@ export default {
         } else {
           data.emailVerified = 'Y';
         }
-        const resData = await this.postRequest(data);
+        const resData = await studentRequestStore().postRequest(data);
         if (resData) {
-          this.setUnsubmittedDocuments();
+          studentRequestStore().setUnsubmittedDocuments();
           if (this.emailChanged) {
             this.nextStep();
           } else {

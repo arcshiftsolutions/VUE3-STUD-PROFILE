@@ -120,6 +120,9 @@
 
 <script>
 
+import {mapState} from "pinia/dist/pinia";
+import {authStore} from "stores/auth";
+
 export default {
   name: 'requestCard',
   props: {
@@ -129,7 +132,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters('auth', ['userInfo']),
+    ...mapState(authStore, ['userInfo']),
   },
 };
 </script>

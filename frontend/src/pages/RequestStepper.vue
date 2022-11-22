@@ -84,7 +84,9 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+
+import {mapState} from "pinia/dist/pinia";
+import {authStore} from "stores/auth";
 
 export default {
   name: 'requestStepper',
@@ -109,7 +111,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('auth', ['userInfo']),
+    ...mapState(authStore, ['userInfo']),
     dataReady() {
       return !!this.userInfo;
     },

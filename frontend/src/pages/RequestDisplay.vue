@@ -59,6 +59,8 @@
 import { RequestStatuses } from '../utils/constants';
 import Chat from './Chat.vue';
 import StatusCard from './StatusCard.vue';
+import {mapState} from "pinia/dist/pinia";
+import {rootStore} from "stores/root";
 
 export default {
   name: 'requestDisplay',
@@ -93,7 +95,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['requestType']),
+    ...mapState(rootStore, ['requestType']),
     status() {
       return this.request[`${this.requestType}StatusCode`];
     },

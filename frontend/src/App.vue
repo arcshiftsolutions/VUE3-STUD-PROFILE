@@ -17,9 +17,10 @@ export default defineComponent({
     authStore().getJwtToken().then(() =>
       Promise.all([penRequestStore().getCodes(), studentRequestStore().getCodes(), authStore().getUserInfo()])
     ).catch(e => {
+      console.log('Error is: ' + e);
       if(! e.response || e.response.status !== HttpStatus.UNAUTHORIZED) {
-        authStore().logout();
-        router.replace({name: 'error', query: { message: `500_${e.data || 'ServerError'}` } });
+        //authStore().logout();
+        //router.replace({name: 'error', query: { message: `500_${e.data || 'ServerError'}` } });
       }
     }).finally(() => {
       authStore().setLoading(false);

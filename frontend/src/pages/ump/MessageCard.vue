@@ -91,8 +91,12 @@
 </template>
 
 <script>
-import { mapGetters,mapActions } from 'vuex';
 import { StudentRequestStatuses } from '@/utils/constants';
+import {mapState} from "pinia/dist/pinia";
+import {studentRequestStore} from "stores/studentRequest";
+import {authStore} from "stores/auth";
+import {rootStore} from "stores/root";
+import {configStore} from "stores/config";
 
 export default {
   name: 'messageCard',
@@ -102,10 +106,10 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('auth', ['userInfo']),
-    ...mapGetters('studentRequest', ['request']),
-    ...mapGetters(['student']),
-    ...mapGetters('config',['numDaysAllowedInDraftStatus']),
+    ...mapState(authStore, ['userInfo']),
+    ...mapState(studentRequestStore, ['request']),
+    ...mapState(rootStore, ['student']),
+    ...mapState(configStore, ['numDaysAllowedInDraftStatus']),
     isSagaInProgress() {
       return this.request.sagaInProgress;
     },
@@ -129,10 +133,9 @@ export default {
     },
   },
   async created(){
-    await this.getNumDaysAllowedInDraftStatus();
+    await configStore().getNumDaysAllowedInDraftStatus();
   },
   methods: {
-    ...mapActions('config',['getNumDaysAllowedInDraftStatus']),
     fullName(...names) {
       return names.filter(Boolean).join(' ').toUpperCase();
     },

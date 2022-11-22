@@ -68,6 +68,9 @@ import Comments from './Comment.vue';
 import ApiService from '../common/apiService';
 import { groupBy, sortBy, findLastIndex } from 'lodash';
 import { RequestStatuses } from '../utils/constants';
+import {mapState} from "pinia/dist/pinia";
+import {rootStore} from "stores/root";
+import {authStore} from "stores/auth";
 
 export default {
   components: {
@@ -87,8 +90,8 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('auth', ['userInfo']),
-    ...mapGetters(['requestType']),
+    ...mapState(authStore, ['userInfo']),
+    ...mapState(rootStore, ['requestType']),
     request() {
       return this.$store.getters[`${this.requestType}/request`];
     },

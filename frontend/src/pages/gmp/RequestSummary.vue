@@ -70,8 +70,10 @@
 </template>
 
 <script>
-import {mapActions, mapGetters, mapMutations} from 'vuex';
 import StudentInfoCard from '../StudentInfoCard';
+import {mapState} from "pinia/dist/pinia";
+import {gmpStore} from "stores/gmp";
+import {penRequestStore} from "stores/penRequest";
 
 export default {
   name: 'requestSummary',
@@ -87,11 +89,9 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('gmp', ['requestData']),
+    ...mapState(gmpStore, ['requestData']),
   },
   methods: {
-    ...mapMutations('penRequest', ['setRequest']),
-    ...mapActions('penRequest', ['postRequest']),
     setErrorAlert() {
       this.alertMessage = 'Sorry, an unexpected error seems to have occured. Please try again later.';
       this.alert = true;
@@ -100,9 +100,9 @@ export default {
     async submitRequest() {
       try {
         this.submitting = true;
-        const resData = await this.postRequest(this.requestData);
+        const resData = await penRequestStore().postRequest(this.requestData);
         if (resData) {
-          this.setRequest(resData);
+          await penRequestStore().setRequest(resData);
           this.nextStep();
         } else {
           this.setErrorAlert();

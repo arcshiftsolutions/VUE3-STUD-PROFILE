@@ -60,8 +60,9 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex';
 import { VerificationResults, AuthRoutes } from '@/utils/constants';
+import {mapState} from "pinia/dist/pinia";
+import {authStore} from "stores/auth";
 
 export default {
   name: 'verification',
@@ -81,7 +82,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('auth', ['isAuthenticated']),
+    ...mapState(authStore, ['isAuthenticated']),
     status() {
       return this.$route.params.status;
     },
@@ -96,9 +97,8 @@ export default {
     },
   },
   methods: {
-    ...mapMutations('auth', ['setJwtToken']),
     clearStorage() {
-      this.setJwtToken();
+      authStore().setJwtToken();
     }
   }
 };

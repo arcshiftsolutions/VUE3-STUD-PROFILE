@@ -98,6 +98,11 @@
 
 <script>
 import { PenRequestStatuses } from '../../utils/constants';
+import {mapState} from "pinia/dist/pinia";
+import {penRequestStore} from "stores/penRequest";
+import {authStore} from "stores/auth";
+import {rootStore} from "stores/root";
+import {configStore} from "stores/config";
 
 export default {
   name: 'messageCard',
@@ -107,10 +112,10 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('auth', ['userInfo']),
-    ...mapGetters('penRequest', ['request']),
-    ...mapGetters(['student']),
-    ...mapGetters('config',['numDaysAllowedInDraftStatus']),
+    ...mapState(authStore, ['userInfo']),
+    ...mapState(penRequestStore, ['request']),
+    ...mapState(rootStore, ['student']),
+    ...mapState(configStore, ['numDaysAllowedInDraftStatus']),
 
     isSagaInProgress() {
       return this.request.sagaInProgress;
@@ -129,10 +134,7 @@ export default {
     },
   },
   async created(){
-    await this.getNumDaysAllowedInDraftStatus();
-  },
-  methods: {
-    ...mapActions('config',['getNumDaysAllowedInDraftStatus']),
+    await configStore().getNumDaysAllowedInDraftStatus();
   }
 };
 </script>

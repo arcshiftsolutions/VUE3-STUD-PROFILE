@@ -125,6 +125,12 @@ import DocumentChip from '../DocumentChip.vue';
 import { PenRequestStatuses, StudentRequestStatuses } from '../utils/constants';
 import { pick, values, partition } from 'lodash';
 import ApiService from '../common/apiService';
+import {mapState} from "pinia/dist/pinia";
+import {penRequestStore} from "stores/penRequest";
+import {studentRequestStore} from "stores/studentRequest";
+import {authStore} from "stores/auth";
+import {rootStore} from "stores/root";
+import {documentStore} from "stores/document";
 
 export default {
   name: 'Ump',
@@ -148,10 +154,10 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('auth', ['isAuthenticated', 'userInfo', 'isLoading']),
-    ...mapGetters('penRequest', {penRequest: 'request'}),
-    ...mapGetters('studentRequest', ['request']),
-    ...mapGetters(['student']),
+    ...mapState(authStore, ['isAuthenticated','userInfo', 'isLoading']),
+    ...mapState(penRequestStore, {penRequest: 'request'}),
+    ...mapState(studentRequestStore, ['request']),
+    ...mapState(rootStore, ['student']),
     hasStudentRecord() {
       return !!this.student;
     },
@@ -172,7 +178,7 @@ export default {
     }
   },
   created() {
-    this.setRequestType('studentRequest');
+    rootStore().setRequestType('studentRequest');
     if(this.hasRequest) {
       this.getInitialDocuments();
     }
@@ -189,13 +195,12 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['setRequestType']),
-    ...mapActions('studentRequest',['getDocumentTypeCodes']),
     canCreateRequest(status) {
       return status === StudentRequestStatuses.REJECTED || status === StudentRequestStatuses.COMPLETED || status === StudentRequestStatuses.ABANDONED;
     },
     getInitialDocuments() {
-      this.getDocumentTypeCodes();
+      documentStore().getDocumentTypeCodes();
+
       ApiService.getDocumentList(this.requestID, this.requestType).then((documentRes) => {
         if(this.request.studentRequestStatusCode === 'DRAFT') {
           this.initialDocuments = documentRes.data;

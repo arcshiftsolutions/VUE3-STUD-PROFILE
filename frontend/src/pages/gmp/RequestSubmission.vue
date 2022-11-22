@@ -41,10 +41,11 @@
 </template>
 
 <script>
-// import { mapGetters } from 'vuex';
 import StatusCard from '../StatusCard';
 import MessageCard from './MessageCard';
 import RequestCard from './RequestCard';
+import {mapState} from "pinia";
+import {penRequestStore} from "../../stores/penRequest.js";
 
 export default {
   name: 'requestSubmission',
@@ -61,7 +62,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters('penRequest', ['request']),
+    ...mapState(penRequestStore, ['request']),
   },
   methods: {
     setSuccessAlert(alertMessage) {

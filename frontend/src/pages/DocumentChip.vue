@@ -82,6 +82,8 @@
 import {humanFileSize} from '../utils/file';
 import {ApiRoutes} from '../utils/constants';
 import {find} from 'lodash';
+import {mapState} from "pinia";
+import {rootStore} from "../stores/root.js";
 
 export default {
   props: {
@@ -109,7 +111,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(['requestType']),
+    ...mapState(rootStore, ['requestType']),
     documentTypeCodes() {
       return this.$store.getters[`${this.requestType}/documentTypeCodes`];
     },

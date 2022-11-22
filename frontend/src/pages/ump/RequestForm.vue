@@ -344,6 +344,10 @@ import DocumentChip from '../DocumentChip.vue';
 import DocumentUpload from '../DocumentUpload';
 import { LocalDate } from '@js-joda/core';
 import { isEqual, mapValues, pick } from 'lodash';
+import {mapState} from "pinia/dist/pinia";
+import {rootStore} from "stores/root";
+import {umpStore} from "stores/ump";
+import {documentStore} from "stores/document";
 
 // `ump` is the name of the Vuex module.
 const { mapFields } = createHelpers({
@@ -383,13 +387,13 @@ export default {
     this.request.legalMiddleNames = this.editLegalMiddleNames ? this.request.legalMiddleNames : this.recordedData.legalMiddleNames;
     this.request.dob = this.editBirthdate ? this.request.dob : this.recordedData.dob;
     this.request.email = (this.editEmail || !this.hasStudentRecord) ? this.request.email : this.recordedData.email;
-    this.getDocumentTypeCodes();
+    documentStore().getDocumentTypeCodes();
   },
   computed: {
-    ...mapGetters('studentRequest', ['unsubmittedDocuments']),
-    ...mapGetters(['student']),
-    ...mapState('ump', ['recordedData']),
-    ...mapState('ump', { request: 'updateData' }),
+    ...mapState(studentRequestStore, ['unsubmittedDocuments']),
+    ...mapState(rootStore, ['student']),
+    ...mapState(umpStore, ['recordedData']),
+    ...mapState(umpStore, { request: 'updateData' }),
     ...mapFields([
       'isEditable.editLegalLastName',
       'isEditable.editLegalFirstName',
@@ -440,7 +444,6 @@ export default {
     }
   },
   methods: {
-    ...mapActions('studentRequest',['getDocumentTypeCodes']),
     requiredRules(hint = 'Required') {
       return [
         v => !!(v && v.trim()) || hint,
