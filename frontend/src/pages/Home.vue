@@ -1,10 +1,11 @@
 <!--suppress ALL -->
 <template>
   <div v-if="!isAuthenticated && !isLoading">
+
     <ModalJourney/>
     <!-- login article -->
     <article name="login-banner">
-        <div class="row" align="center" justify="center" style="margin-right: 0;margin-left: 0">
+        <div class="row" justify="center" style="margin-right: 0;margin-left: 0">
           <Login></Login>
         </div>
     </article>
@@ -69,8 +70,8 @@ import Login from './Login.vue';
 import ModalJourney from './ModalJourney.vue';
 import UserStudentCard from './UserStudentCard.vue';
 import { mapState } from 'pinia';
-import {authStore} from "stores/auth";
-import {rootStore} from "stores/root";
+import {authStore} from "../stores/auth.js";
+import {rootStore} from "../stores/root.js";
 
 export default {
   name: 'home',
@@ -82,6 +83,7 @@ export default {
   computed: {
     ...mapState(authStore, ['isAuthenticated', 'isLoading', 'userInfo']),
     ...mapState(rootStore, ['student']),
+
     hasBcscLinkageForStudent() {
       return this.userInfo?.accountType === 'BCSC' && this.student;
     },

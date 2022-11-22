@@ -362,9 +362,7 @@
 </template>
 
 <script>
-import {mapGetters, mapMutations} from 'vuex';
 import {LocalDate} from '@js-joda/core';
-import { createHelpers } from 'vuex-map-fields';
 
 // `gmp` is the name of the Vuex module.
 const { mapFields } = createHelpers({
@@ -379,7 +377,7 @@ export default {
       legalLastNameHint: 'As shown on current Government Photo ID. Note, If you have ONE name only – enter it in Legal Last Name field and leave Legal First Name blank',
       emailHint: 'Valid Email Required',
       menu: false,
-      appTitle: process.env.VUE_APP_TITLE,
+      appTitle: import.meta.env.VUE_APP_TITLE,
       entries: [],
       isLoading: false,
       model: null,

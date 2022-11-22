@@ -1,7 +1,7 @@
 <template>
   <q-page-container fluid class="full-height">
     <article id="verification-container" class="background top-banner full-height">
-      <div class="row" align="center" justify="center" style="width: 1vw;margin-right: 0;margin-left: 0;margin-bottom: 5rem;">
+      <div class="row" justify="center" style="width: 1vw;margin-right: 0;margin-left: 0;margin-bottom: 5rem;">
         <div class="col"  xs="8" sm="8" md="8" lg="8" xl="8">
           <q-card>
             <q-card-title class="gov-header">
@@ -48,7 +48,7 @@
               </p>
             </q-card-section>
             <q-card-actions v-if="this.status === this.verificationResults.OK || this.status === this.verificationResults.EXPIRED">
-              <div class="row" align="center" justify="center">
+              <div class="row" justify="center">
                 <q-btn id="login-button" @click="clearStorage" :href="authRoutes.LOGIN" class="ma-2" dark color='#003366'>Log In <v-icon>$sign_in</v-icon></q-btn>
               </div>
             </q-card-actions>
@@ -77,7 +77,7 @@ export default {
   },
   data() {
     return {
-      appTitle: process.env.VUE_APP_TITLE,
+      appTitle: import.meta.env.VUE_APP_TITLE,
     };
   },
   computed: {

@@ -284,7 +284,7 @@
                     class="black--text pa-4">
               <p><strong>Collection Notice:</strong></p>
               <p>
-                The information included in this form is collected under ss. 26(c) of the Freedom of Information and Protection of Privacy Act, R.S.B.C. 1996, c. 165. 
+                The information included in this form is collected under ss. 26(c) of the Freedom of Information and Protection of Privacy Act, R.S.B.C. 1996, c. 165.
                 The information you provide will be used in confirming your identity and communicating with you.
               </p>
               <p>
@@ -342,11 +342,8 @@
 <script>
 import DocumentChip from '../DocumentChip.vue';
 import DocumentUpload from '../DocumentUpload';
-import { mapGetters, mapState, mapActions } from 'vuex';
 import { LocalDate } from '@js-joda/core';
 import { isEqual, mapValues, pick } from 'lodash';
-
-import { createHelpers } from 'vuex-map-fields';
 
 // `ump` is the name of the Vuex module.
 const { mapFields } = createHelpers({

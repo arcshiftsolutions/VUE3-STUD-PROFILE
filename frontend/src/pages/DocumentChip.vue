@@ -79,9 +79,8 @@
 </template>
 
 <script>
-import {humanFileSize} from '@/utils/file';
-import {mapGetters} from 'vuex';
-import {ApiRoutes} from '@/utils/constants';
+import {humanFileSize} from '../utils/file';
+import {ApiRoutes} from '../utils/constants';
 import {find} from 'lodash';
 
 export default {

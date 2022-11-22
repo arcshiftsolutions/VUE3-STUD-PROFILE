@@ -33,7 +33,7 @@ export const studentRequestStore = defineStore('studentRequest', {
       }
     },
     async getCodes({commit}, requestType) {
-      const response = await ApiService.getCodes(requestType);
+      const response = await ApiService.getCodes('studentRequest');
       this.statusesState = response.data.statusCodes;
     }
   }

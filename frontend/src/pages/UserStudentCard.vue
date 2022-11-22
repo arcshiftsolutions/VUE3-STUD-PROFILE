@@ -81,7 +81,7 @@
 
 <script>
 import {mapState} from "pinia";
-import {rootStore} from "stores/root";
+import {rootStore} from "../stores/root.js";
 
 export default {
   name: 'UserStudentCard',

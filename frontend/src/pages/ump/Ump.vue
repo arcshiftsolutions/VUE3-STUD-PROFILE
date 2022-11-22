@@ -4,7 +4,7 @@
     <ModalJourney/>
     <!-- login article -->
     <article name="login-banner">
-        <div class="row" align="center" justify="center" style="margin-right: 0;margin-left: 0">
+        <div class="row" justify="center" style="margin-right: 0;margin-left: 0">
           <Login></Login>
         </div>
     </article>
@@ -12,7 +12,7 @@
 
   <q-page-container fluid class="full-height" v-else-if="isLoading || (hasRequest && loadingDocuments)">
     <article id="progress-display-container" class="top-banner full-height">
-      <div class="row" align="center" justify="center">
+      <div class="row" justify="center">
         <q-circular-progress
                 size="60"
                 :width="7"
@@ -25,7 +25,7 @@
 
   <q-page-container fluid class="full-height" v-else-if="isAuthenticated && hasRequest && !loadingDocuments">
     <article id="request-display-container" class="top-banner full-height">
-        <div class="row" align="center" justify="center" style="width: 1vw;margin-right: 0;margin-left: 0;margin-bottom: 5rem;">
+        <div class="row" justify="center" style="width: 1vw;margin-right: 0;margin-left: 0;margin-bottom: 5rem;">
           <v-alert
             dense
             outlined
@@ -37,7 +37,7 @@
             {{ alertMessage }}
           </v-alert>
           <div class="col pt-1 pt-sm-3" xs="11" sm="11" md="10" lg="8" xl="6">
-            <RequestDisplay 
+            <RequestDisplay
               :title="requestTitle"
               :can-create-request="canCreateRequest"
               :new-request-text="newRequestText"
@@ -76,14 +76,14 @@
 
   <q-page-container fluid class="full-height" v-else-if="isAuthenticated && hasInflightGMPRequest">
     <article id="request-display-container" class="top-banner full-height">
-        <div class="row" align="center" justify="center" style="width: 1vw;margin-right: 0;margin-left: 0;margin-bottom: 5rem;">
+        <div class="row" justify="center" style="width: 1vw;margin-right: 0;margin-left: 0;margin-bottom: 5rem;">
           <div class="col pt-1 pt-sm-3" xs="10" sm="8" md="6" lg="5" xl="3">
             <q-card class="student-request-card">
               <q-card-section>
                 <p class="ma-0"><strong>You have a PEN request in progress. Please wait for it to be completed before requesting updates to you PEN information.</strong></p>
               </q-card-section>
               <q-card-actions>
-                <div class="row" align="center" justify="center">
+                <div class="row" justify="center">
                   <q-btn id="home-button" @click="$router.push('home')" class="mb-2" dark color="#003366">Home</q-btn>
                 </div>
               </q-card-actions>
@@ -97,7 +97,7 @@
   <q-page-container fluid class="full-height" v-else-if="isAuthenticated && !hasRequest">
     <!-- request form -->
     <article id="request-form-container" class="top-banner full-height">
-        <div class="row" align="center" justify="center" style="width: 1vw;margin-right: 0;margin-left: 0;margin-bottom: 5rem;">
+        <div class="row" justify="center" style="width: 1vw;margin-right: 0;margin-left: 0;margin-bottom: 5rem;">
           <div class="col" xs="10" sm="10" md="10" lg="10" xl="10">
             <router-view></router-view>
           </div>
@@ -108,7 +108,7 @@
 
   <q-page-container fluid class="full-height" v-else>
     <article id="request-form-container" class="top-banner full-height">
-      <div class="row" align="center" justify="center">
+      <div class="row" justify="center">
         <q-skeleton type="image"></q-skeleton>
       </div>
     </article>
@@ -122,10 +122,9 @@ import ModalJourney from '../ModalJourney';
 import MessageCard from './MessageCard';
 import StudentInfoCard from '../StudentInfoCard';
 import DocumentChip from '../DocumentChip.vue';
-import { PenRequestStatuses, StudentRequestStatuses } from '@/utils/constants';
-import { mapGetters, mapMutations, mapActions } from 'vuex';
+import { PenRequestStatuses, StudentRequestStatuses } from '../utils/constants';
 import { pick, values, partition } from 'lodash';
-import ApiService from '@/common/apiService';
+import ApiService from '../common/apiService';
 
 export default {
   name: 'Ump',

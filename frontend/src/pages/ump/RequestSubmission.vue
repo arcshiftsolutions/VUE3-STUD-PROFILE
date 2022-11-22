@@ -49,7 +49,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import ApiService from '@/common/apiService';
+import ApiService from '../common/apiService';
 import StudentInfoCard from '../StudentInfoCard';
 
 export default {
@@ -87,7 +87,7 @@ export default {
         this.setSuccessAlert('Your verification email has been sent successfully.');
       }).catch(() => {
         this.setErrorAlert('Sorry, an unexpected error seems to have occurred. You can click on the resend button again later.');
-      }).finally(() => 
+      }).finally(() =>
         this.sending = false
       );
     },

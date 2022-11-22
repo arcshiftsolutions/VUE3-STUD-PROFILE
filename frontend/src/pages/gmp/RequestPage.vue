@@ -2,7 +2,7 @@
   <q-page-container fluid class="full-height" v-if="isAuthenticated && !hasPen">
     <!-- pen request form -->
     <article id="request-form-container" class="top-banner full-height">
-      <div class="row" align="center" justify="center">
+      <div class="row" justify="center">
         <div class="col" xs="8" sm="8" md="8" lg="8" xl="8">
           <RequestStepper
             :steps="steps"
@@ -17,7 +17,7 @@
 
 <script>
 import RequestStepper from '../RequestStepper';
-import { mapGetters } from 'vuex';
+
 export default {
   name: 'request-page',
   components: {

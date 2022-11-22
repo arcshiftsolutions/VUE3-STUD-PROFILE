@@ -4,7 +4,7 @@
     <ModalJourney/>
     <!-- login article -->
     <article name="login-banner">
-        <div class="row" align="center" justify="center" style="margin-right: 0;margin-left: 0">
+        <div class="row" justify="center" style="margin-right: 0;margin-left: 0">
           <Login></Login>
         </div>
     </article>
@@ -12,7 +12,7 @@
 
   <q-page-container fluid class="full-height" v-else-if="isLoading || hasCompletedPenRequestButNoStudentLinkage">
     <article id="progress-display-container" class="top-banner full-height">
-      <div class="row" align="center" justify="center">
+      <div class="row" justify="center">
         <q-circular-progress
                 size="60"
                 :width="7"
@@ -25,7 +25,7 @@
 
   <q-page-container fluid class="full-height" v-else-if="isAuthenticated && hasPenRequest && requestType === 'penRequest'">
     <article id="request-display-container" class="top-banner full-height">
-        <div class="row" align="center" justify="center" style="width: 1vw;margin-right: 0;margin-left: 0;margin-bottom: 5rem;">
+        <div class="row" justify="center" style="width: 1vw;margin-right: 0;margin-left: 0;margin-bottom: 5rem;">
           <div class="col pt-1 pt-sm-3" xs="11" sm="11" md="10" lg="8" xl="6">
             <RequestDisplay
               :title="requestTitle"
@@ -46,7 +46,7 @@
 
   <q-page-container fluid class="full-height" v-else-if="isAuthenticated && (hasInflightStudentRequest || hasCompletedStudentRequest)">
     <article id="request-display-container" class="top-banner full-height">
-        <div class="row" align="center" justify="center" style="width: 1vw;margin-right: 0;margin-left: 0;margin-bottom: 5rem;">
+        <div class="row" justify="center" style="width: 1vw;margin-right: 0;margin-left: 0;margin-bottom: 5rem;">
           <div class="col pt-1 pt-sm-3" xs="10" sm="8" md="6" lg="5" xl="3">
             <q-card class="student-request-card">
               <q-card-section>
@@ -54,7 +54,7 @@
                 <p v-else class="ma-0"><strong>Hi {{student.legalFirstName || ''}}, you have been provided your PEN and don't need to request it again. Your PEN is {{student.pen}}.</strong></p>
               </q-card-section>
               <q-card-actions>
-                <div class="row" align="center" justify="center">
+                <div class="row" justify="center">
                   <q-btn id="home-button" @click="$router.push('home')" class="mb-2" dark color="#003366">Home</q-btn>
                 </div>
               </q-card-actions>
@@ -67,7 +67,7 @@
   <q-page-container fluid class="full-height" v-else-if="isAuthenticated">
     <!-- pen request form -->
     <article id="request-form-container" class="top-banner full-height">
-        <div class="row" align="center" justify="center" style="width: 1vw;margin-right: 0;margin-left: 0;margin-bottom: 5rem;">
+        <div class="row" justify="center" style="width: 1vw;margin-right: 0;margin-left: 0;margin-bottom: 5rem;">
           <div class="col" xs="10" sm="10" md="10" lg="10" xl="10">
             <router-view></router-view>
           </div>
@@ -78,7 +78,7 @@
 
   <q-page-container fluid class="full-height" v-else>
     <article id="request-form-container" class="top-banner full-height">
-      <div class="row" align="center" justify="center">
+      <div class="row" justify="center">
         <q-skeleton type="image"></q-skeleton>
       </div>
     </article>
@@ -91,8 +91,7 @@ import RequestDisplay from '../RequestDisplay';
 import ModalJourney from '../ModalJourney';
 import MessageCard from './MessageCard';
 import RequestCard from './RequestCard';
-import { PenRequestStatuses, StudentRequestStatuses } from '@/utils/constants';
-import { mapGetters, mapMutations } from 'vuex';
+import { PenRequestStatuses, StudentRequestStatuses } from '../utils/constants';
 import { pick, values } from 'lodash';
 export default {
   name: 'home',

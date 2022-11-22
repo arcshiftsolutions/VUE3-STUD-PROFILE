@@ -32,8 +32,8 @@ export const penRequestStore = defineStore('penRequest', {
         return false;
       }
     },
-    async getCodes({commit}, requestType) {
-      const response = await ApiService.getCodes(requestType);
+    async getCodes({commit}) {
+      const response = await ApiService.getCodes('penRequest');
       this.statusesState = response.data.statusCodes;
     }
   }

@@ -9,72 +9,73 @@ import { PenRequestStatuses, StudentRequestStatuses } from '../utils/constants';
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('../layouts/MainLayout.vue'),
     children: [
       {
         name: 'home',
         path: '',
-        component: () => import('pages/Home.vue')
+        component: () => import('../pages/SessionExpired.vue')
       }
     ],
     meta: {
       requiresAuth: true
     },
-  },
+  }
+  ,
   {
     path: '/error',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('../layouts/MainLayout.vue'),
     children: [
       {
         name: 'error',
         path: '',
-        component: () => import('pages/ErrorPage.vue')
+        component: () => import('../pages/ErrorPage.vue')
       }
     ],
   },
   {
     path: '/logout',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('../layouts/MainLayout.vue'),
     children: [
       {
         name: 'logout',
         path: '',
-        component: () => import('pages/Logout.vue')
+        component: () => import('../pages/Logout.vue')
       }
     ],
   },
   {
     path: '/session-expired',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('../layouts/MainLayout.vue'),
     children: [
       {
         name: 'session-expired',
         path: '',
-        component: () => import('pages/SessionExpired.vue')
+        component: () => import('../pages/SessionExpired.vue')
       }
     ],
   },
   {
     path: '/login-error',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('../layouts/MainLayout.vue'),
     children: [
       {
         name: 'login-error',
         path: '',
-        component: () => import('pages/LoginError.vue')
+        component: () => import('../pages/LoginError.vue')
       }
     ],
   },
   {
     path: '/ump',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('../layouts/MainLayout.vue'),
     meta: {
       requiresAuth: true
     },
     children: [
       {
         path: '',
-        component: () => import('pages/ump/Ump.vue'),
+        component: () => import('../pages/ump/Ump.vue'),
         name: 'ump',
         meta: {
           requiresAuth: true
@@ -92,7 +93,7 @@ const routes = [
       },
       {
         path: 'request',
-        component: () => import('pages/ump/RequestPage.vue'),
+        component: () => import('../pages/ump/RequestPage.vue'),
         meta: {
           requiresAuth: true
         },
@@ -100,7 +101,7 @@ const routes = [
           {
             path: '',
             name: 'step1',
-            component: () => import('pages/ump/CurrentInfo.vue'),
+            component: () => import('../pages/ump/CurrentInfo.vue'),
             beforeEnter: checkStudentRequestExists,
             meta: {
               requiresAuth: true,
@@ -110,7 +111,7 @@ const routes = [
           {
             path: 'requestForm',
             name: 'step2',
-            component: () => import('pages/ump/StudentRequestForm.vue'),
+            component: () => import('../pages/ump/RequestForm.vue'),
             beforeEnter: checkStudentRequestExists,
             meta: {
               requiresAuth: true,
@@ -120,7 +121,7 @@ const routes = [
           {
             path: 'requestSummary',
             name: 'step3',
-            component: () => import('pages/ump/StudentRequestSummary.vue'),
+            component: () => import('../pages/ump/RequestSummary.vue'),
             beforeEnter: checkStudentRequestExists,
             meta: {
               requiresAuth: true,
@@ -130,7 +131,7 @@ const routes = [
           {
             path: 'requestSubmission',
             name: 'step4',
-            component: () => import('pages/ump/StudentRequestSubmission.vue'),
+            component: () => import('../pages/ump/RequestSubmission.vue'),
             meta: {
               requiresAuth: true,
               notRefreshUserInfo: true
@@ -141,19 +142,19 @@ const routes = [
       {
         path: 'verification/:status',
         name: 'student-request-verification',
-        component: () => import('pages/ump/StudentRequestVerification.vue')
+        component: () => import('../pages/ump/Verification.vue')
       },
     ]
   },
   {
     path: '/gmp',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('../layouts/MainLayout.vue'),
 
     children: [
       {
         path: '',
         name: 'gmp',
-        component: () => import('pages/gmp/Gmp.vue'),
+        component: () => import('../pages/gmp/Gmp.vue'),
         meta: {
           requiresAuth: true
         },
@@ -170,7 +171,7 @@ const routes = [
       },
       {
         path: 'request',
-        component: () => import('pages/gmp/PenRequestPage.vue'),
+        component: () => import('../pages/gmp/RequestPage.vue'),
         meta: {
           requiresAuth: true
         },
@@ -178,7 +179,7 @@ const routes = [
           {
             path: '',
             name: 'gmp-step1',
-            component: () => import('pages/gmp/PenRequestForm.vue'),
+            component: () => import('../pages/gmp/RequestForm.vue'),
             beforeEnter: checkPenRequestExists,
             meta: {
               requiresAuth: true
@@ -187,7 +188,7 @@ const routes = [
           {
             path: 'requestSummary',
             name: 'gmp-step2',
-            component: () => import('pages/gmp/PenRequestSummary.vue'),
+            component: () => import('../pages/gmp/RequestSummary.vue'),
             beforeEnter: checkPenRequestExists,
             meta: {
               requiresAuth: true
@@ -196,7 +197,7 @@ const routes = [
           {
             path: 'requestSubmission',
             name: 'gmp-step3',
-            component: () => import('pages/gmp/PenRequestSubmission.vue'),
+            component: () => import('../pages/gmp/RequestSubmission.vue'),
             meta: {
               requiresAuth: true
             },
@@ -206,7 +207,7 @@ const routes = [
       {
         path: 'verification/:status',
         name: 'pen-request-verification',
-        component: () => import('pages/gmp/PenRequestVerification.vue'),
+        component: () => import('../pages/gmp/Verification.vue'),
         meta: {
           requiresAuth: true
         },
@@ -215,11 +216,12 @@ const routes = [
   },
   {
     path: '/login',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('../layouts/MainLayout.vue'),
     children: [
       {
         name: 'login',
-        path: '', component: () => import('pages/Login.vue')
+        path: '',
+        component: () => import('../pages/Login.vue')
       }
     ],
   },
@@ -233,11 +235,11 @@ const routes = [
   },
   {
     path: '/token-expired',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('../layouts/MainLayout.vue'),
     children: [
       {
         name: 'backend-session-expired',
-        path: '', component: () => import('pages/BackendSessionExpired.vue')
+        path: '', component: () => import('../pages/BackendSessionExpired.vue')
       }
     ],
   }

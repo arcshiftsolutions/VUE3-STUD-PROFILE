@@ -1,34 +1,31 @@
 <template>
-  <q-page-container class="blue-back" fluid>
-      <div class="row" align="center" justify="center">
-        <div class="col" xs="4" sm="4" md="4" lg="4" xl="4">
-        <q-card class="error-card">
-          <q-card-section class="gov-header">
-            <h4 id="error_text">System Error</h4>
-          </q-card-section>
-          <q-card-section id="error_message">
-            You have encountered a System Error. Close your Web browser, open a new session, then try again.
-          </q-card-section>
-        </q-card>
-        </div>
-    </div>
-  </q-page-container>
+    <div class="row" justify="center">
+      <div class="col" xs="4" sm="4" md="4" lg="4" xl="4">
+      <q-card class="error-card">
+        <q-card-section class="gov-header">
+          <h4 id="error_text">System Error</h4>
+        </q-card-section>
+        <q-card-section id="error_message">
+          You have encountered a System Error. Close your Web browser, open a new session, then try again.
+        </q-card-section>
+      </q-card>
+      </div>
+  </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+
+import {authStore} from "../stores/auth.js";
+
 export default {
   data() {
     return {
       errorMessage: this.$route.query.message
     };
   },
-  methods: {
-    ...mapActions('auth', ['loginErrorRedirect'])
-  },
   async created(){
     if(this.errorMessage === 'Unable_to_authenticate'){
-      this.loginErrorRedirect();
+      authStore().setLoginError();
     }
   }
 };

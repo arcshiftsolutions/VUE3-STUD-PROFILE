@@ -179,7 +179,6 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex';
 import { LocalDate } from '@js-joda/core';
 import { pick } from 'lodash';
 

@@ -18,7 +18,7 @@
     </div>
     <div class="row">
       <StatusCard
-        @success-alert="setSuccessAlert" 
+        @success-alert="setSuccessAlert"
         @error-alert="setErrorAlert"
       ></StatusCard>
     </div>
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+// import { mapGetters } from 'vuex';
 import StatusCard from '../StatusCard';
 import MessageCard from './MessageCard';
 import RequestCard from './RequestCard';

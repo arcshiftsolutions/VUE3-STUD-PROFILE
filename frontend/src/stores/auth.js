@@ -24,7 +24,7 @@ async function refreshToken({getters, commit, dispatch}) {
 
   const response = await AuthService.refreshAuthToken(getters.jwtToken);
   if (response.jwtFrontend) {
-    commit('setJwtToken', response.jwtFrontend);
+    await this.setJwtToken(response.jwtFrontend);
     ApiService.setAuthHeader(response.jwtFrontend);
   } else {
     throw 'No jwtFrontend';
@@ -35,7 +35,7 @@ async function getInitialToken({commit}) {
   const response = await AuthService.getAuthToken();
 
   if (response.jwtFrontend) {
-    commit('setJwtToken', response.jwtFrontend);
+    await this.setJwtToken(response.jwtFrontend);
     ApiService.setAuthHeader(response.jwtFrontend);
   } else {
     throw 'No jwtFrontend';

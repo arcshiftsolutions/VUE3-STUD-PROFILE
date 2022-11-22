@@ -12,14 +12,14 @@
 
 <script>
 import { mapState } from 'pinia';
-import {authStore} from "stores/auth";
+import {authStore} from "../stores/auth.js";
 import { AuthRoutes } from '../utils/constants';
 
 export default {
   name: 'Login',
   data() {
     return {
-      appTitle: process.env.VUE_APP_TITLE,
+      appTitle: import.meta.env.VUE_APP_TITLE,
       authRoutes: AuthRoutes
     };
   },
