@@ -91,7 +91,7 @@
 </template>
 
 <script>
-import { StudentRequestStatuses } from '@/utils/constants';
+import { StudentRequestStatuses } from '../../utils/constants';
 import {mapState} from "pinia";
 import {studentRequestStore} from "stores/studentRequest";
 import {authStore} from "stores/auth";

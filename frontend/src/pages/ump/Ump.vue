@@ -116,15 +116,15 @@
 </template>
 
 <script>
-import Login from '../Login';
-import RequestDisplay from '../RequestDisplay';
-import ModalJourney from '../ModalJourney';
-import MessageCard from './MessageCard';
-import StudentInfoCard from '../StudentInfoCard';
+import Login from '../Login.vue';
+import RequestDisplay from '../RequestDisplay.vue';
+import ModalJourney from '../ModalJourney.vue';
+import MessageCard from './MessageCard.vue';
+import StudentInfoCard from '../StudentInfoCard.vue';
 import DocumentChip from '../DocumentChip.vue';
-import { PenRequestStatuses, StudentRequestStatuses } from '../utils/constants';
+import { PenRequestStatuses, StudentRequestStatuses } from '../../utils/constants.js';
 import { pick, values, partition } from 'lodash';
-import ApiService from '../common/apiService';
+import ApiService from '../../common/apiService';
 import {mapState} from "pinia";
 import {penRequestStore} from "stores/penRequest";
 import {studentRequestStore} from "stores/studentRequest";

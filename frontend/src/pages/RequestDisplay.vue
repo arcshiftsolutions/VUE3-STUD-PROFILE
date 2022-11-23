@@ -99,9 +99,6 @@ export default {
     status() {
       return this.request[`${this.requestType}StatusCode`];
     },
-    request() {
-      return this.$store.getters[`${this.requestType}/request`];
-    },
     requestStatuses() {
       return RequestStatuses;
     },
