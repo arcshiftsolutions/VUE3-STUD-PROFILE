@@ -30,18 +30,34 @@
         </q-skeleton>
       </div>
     </q-toolbar>
+    <q-bar v-if="bannerColor !== ''"
+           :style="bannerStyle"
+           :color="bannerColor"
+           sticky
+           class="flex-center"
+    >
+      <div class="row flex-center">
+        <div class="col flex-center">
+          <div style="font-size: larger">{{ bannerEnvironment }} Environment</div>
+        </div>
+      </div>
+    </q-bar>
   </q-header>
+
 </template>
 
 <script>
 import {AuthRoutes} from '../utils/constants';
 import { authStore } from '../stores/auth';
 import { mapState } from 'pinia';
+import StaticConfig from '../common/staticConfig';
 
 export default {
   data() {
     return {
-      appTitle: import.meta.env.VUE_APP_TITLE,
+      bannerEnvironment: StaticConfig.BANNER_ENVIRONMENT,
+      bannerColor: StaticConfig.BANNER_COLOR,
+      appTitle: process.env.VUE_APP_TITLE,
       authRoutes: AuthRoutes
     };
   },
@@ -49,6 +65,13 @@ export default {
     ...mapState(authStore, ['isAuthenticated','userInfo']),
     dataReady: function () {
       return this.userInfo;
+    },
+    bannerStyle(){
+      return{
+        "background-color": this.bannerColor,
+        "color": 'white',
+        "font-weight": 'bolder'
+      };
     }
   },
 };

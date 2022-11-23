@@ -25,36 +25,24 @@ export default route(function (/* { store, ssrContext } */) {
   })
 
   Router.beforeEach((to, _from, next) => {
-    console.log('Meta ' + JSON.stringify(to.meta));
-    console.log('Auth ' + authStore().isAuthenticated);
-    console.log('Here1');
     if (to.meta.requiresAuth && authStore().isAuthenticated) {
-      console.log('Here2');
       authStore().getJwtToken().then(() => {
-        console.log('Here3');
         if (!authStore().isAuthenticated) {
-          console.log('Here4');
           next('/token-expired');
         } else if(to.meta.notRefreshUserInfo) {
-          console.log('Here5');
           next();
         } else {
-          console.log('Here6');
           authStore().getUserInfo().then(() => {
-            console.log('Here7');
             next();
           }).catch(() => {
-            console.log('Here8');
             next('error');
           });
         }
       }).catch((e) => {
-        console.log('Here9' + e);
         next('/token-expired');
       });
     }
     else{
-      console.log('Here10');
       next();
     }
   });

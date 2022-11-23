@@ -19,6 +19,7 @@ export default defineComponent({
     ).catch(e => {
       console.log('Error is: ' + e);
       if(! e.response || e.response.status !== HttpStatus.UNAUTHORIZED) {
+        //TODO fix this
         //authStore().logout();
         //router.replace({name: 'error', query: { message: `500_${e.data || 'ServerError'}` } });
       }

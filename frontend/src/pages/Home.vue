@@ -22,39 +22,43 @@
 <!--    </div>-->
 <!--  </div>-->
 
-  <div >
-    <div justify=center class="row" :class="{'px-16': $q.screen.xl, 'mx-16': $q.screen.xl }">
-        <div class="col" cols="10" xl="8" lg="8" md="10" sm="10" xs="10" :class="{'px-16': $q.screen.xl }">
-            <div>If you are currently attending a K-12 school, please request your PEN or update your personal information by contacting the main office at your school
-               <ul class="pl-8" style="list-style-position: outside;">
-                 <li><a href="http://www.bced.gov.bc.ca/apps/imcl/imclWeb/Home.do" rel="noopener noreferrer" target="_blank">Find your school's contact information</a></li>
-               </ul>
-            </div>
+  <div class="q-mt-lg">
+    <div class="row flex-center">
+        <div class="col flex flex-center">
+            If you are currently attending a K-12 school, please request your PEN or update your personal information by contacting the main office at your school
         </div>
     </div>
-    <div class="row" justify=center>
-      <div cols="12" lg="6" class="col px-8">
-        <UserStudentCard v-if="hasBcscLinkageForStudent" class="px-4 py-4"></UserStudentCard>
-        <q-card v-else :class="{'px-16': $q.screen.gt.md }" class="px-4 py-4" style="height: 100%;">
+    <div class="row flex-center">
+      <div class="col flex flex-center">
+        <ul>
+          <li><a href="http://www.bced.gov.bc.ca/apps/imcl/imclWeb/Home.do" rel="noopener noreferrer" target="_blank">Find your school's contact information</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row q-mt-lg">
+      <div class="col q-px-lg">
+        <UserStudentCard v-if="hasBcscLinkageForStudent" class="q-pa-sm"></UserStudentCard>
+        <q-card v-else :class="{'q-px-xl': $q.screen.gt.md }" class="q-pa-sm" style="height: 100%;">
           <p style="text-align:center">
             <router-link to="gmp">
               <img id="gmpLink" alt="Find PEN" src="../assets/images/icon-find-pen.svg" style="display:block; float:initial; margin:auto" title="Find PEN">Get your Personal Education<br>Number (PEN)
             </router-link>
           </p>
-          <p class="my-1">Former students can send a request via an online form to receive their PEN
+          <p class="q-my-sm">Former students can send a request via an online form to receive their PEN
           </p>
         </q-card>
       </div>
-      <div cols="12" lg="6" class="col px-8">
-        <q-card :class="{'px-16': $q.screen.gt.md }" class="px-4 py-4" style="height: 100%;">
+      <div class="col q-px-lg">
+        <q-card :class="{'q-px-xl': $q.screen.gt.md }" class="q-pa-sm" style="height: 100%;">
           <p style="text-align:center">
             <router-link to="ump">
               <img id="umpLink" alt="Update My PEN" src="../assets/images/updatemypen.svg" style="display:block; float:initial; margin:auto" title="Update My PEN">Update your PEN information
             </router-link>
           </p>
-          <p class="my-1">Former students can update their personal information associated with their PEN so that transcripts display current legal name
+          <p class="q-my-sm">Former students can update their personal information associated with their PEN so that transcripts display current legal name
           </p>
-          <ul style="text-align:left; list-style-position: outside;" :class="{'px-16': $q.screen.gt.md }">
+          <ul style="text-align:left; list-style-position: outside;" :class="{'q-px-xl': $q.screen.gt.md }">
             <li>
               You cannot change your Personal Education Number (PEN)
             </li>
@@ -93,6 +97,9 @@ export default {
     background-size: cover;
     align-items: center;
     display: flex;
+  }
+  a{
+    color: #1976d2;
   }
 </style>
 
