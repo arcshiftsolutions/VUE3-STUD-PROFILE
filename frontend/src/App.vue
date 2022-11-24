@@ -33,6 +33,7 @@ export default defineComponent({
 <style>
 .q-layout {
   font-family: 'BCSans', Verdana, Arial, sans-serif !important;
+  font-size: 1rem;
 }
 
 .top-banner{

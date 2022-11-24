@@ -22,9 +22,9 @@
 <!--    </div>-->
 <!--  </div>-->
 
-  <div class="q-mt-lg">
+  <div class="q-pt-md q-pb-xl">
     <div class="row flex-center">
-        <div class="col flex flex-center">
+        <div class="col flex flex-center q-px-md">
             If you are currently attending a K-12 school, please request your PEN or update your personal information by contacting the main office at your school
         </div>
     </div>
@@ -37,7 +37,7 @@
     </div>
 
     <div class="row q-mt-lg">
-      <div class="col q-px-lg">
+      <div class="col q-px-lg col-xs-12 col-md-6">
         <UserStudentCard v-if="hasBcscLinkageForStudent" class="q-pa-sm"></UserStudentCard>
         <q-card v-else :class="{'q-px-xl': $q.screen.gt.md }" class="q-pa-sm" style="height: 100%;">
           <p style="text-align:center">
@@ -49,7 +49,7 @@
           </p>
         </q-card>
       </div>
-      <div class="col q-px-lg">
+      <div class="col q-px-lg col-xs-12 col-md-6 " :class="{'q-pt-md q-mb-md': $q.screen.lt.md }">
         <q-card :class="{'q-px-xl': $q.screen.gt.md }" class="q-pa-sm" style="height: 100%;">
           <p style="text-align:center">
             <router-link to="ump">
@@ -98,6 +98,7 @@ export default {
     align-items: center;
     display: flex;
   }
+
   a{
     color: #1976d2;
   }
